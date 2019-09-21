@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snurby7/financial-vue"
+  },
+  "author": "https://github.com/sv2",
+  "homepage": "https://snurby7.github.io/financial-vue/",
+  "bugs": {
+    "url": "https://github.com/snurby7/financial-vue/issues"
+  },
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start": "concurrently --kill-others --success first \"npm start --prefix ./packages/server\" \"npm run serve --prefix ./packages/ui\"",
+    "test": "npm run test:common && npm run test:server && npm run test:ui",
+    "test:common": "npm test --prefix ./packages/common",
+    "test:server": "npm test --prefix ./packages/server",
+    "test:ui": "npm test --prefix ./packages/ui",
+    "build": "lerna run build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
+    "getv": "echo $IMAGE_VERSION",
+    "docker:build": "IMAGE_VERSION=$(node -p \"require('./lerna.json').version\") && docker image build -t $npm_package_config_imageRepo:$IMAGE_VERSION -f ./docker/Dockerfile .",
+    "publish": "lerna publish"
+  },
+  "devDependencies": {
+    "lerna": "^2.11.0",
+    "vuepress": "^0.10.1",
+    "vuepress-theme-vue": "^1.1.0",
+    "concurrently": "^3.6.0"
+  },
+  "engines": {
+    "node": ">= 8"
+  }
+}
