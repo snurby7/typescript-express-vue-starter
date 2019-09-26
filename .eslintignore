@@ -3,3 +3,12 @@ template
 packages/test
 temp
 dist
+
+
+**/build/
+*.js
+**/**/*.js
+!**/**/*.config.js
+!**/**/.eslintrc.js
+!**/**/start.js
+**/**/**/*.js.map
