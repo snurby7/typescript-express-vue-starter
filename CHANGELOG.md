@@ -1,6 +1,6 @@
 # financial-vue
 
-### Chengelog
+### Changelog
 
 # 0.0.1
 
