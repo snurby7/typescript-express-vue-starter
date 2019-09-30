@@ -25,7 +25,6 @@
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
     "getv": "echo $IMAGE_VERSION",
-    "docker:build": "IMAGE_VERSION=$(node -p \"require('./lerna.json').version\") && docker image build -t $npm_package_config_imageRepo:$IMAGE_VERSION -f ./docker/Dockerfile .",
     "publish": "lerna publish"
   },
   "devDependencies": {
