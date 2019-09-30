@@ -2,8 +2,7 @@
 
 ### Vue Fullstack App Monorepo Boilerplate
 
-- Forked from [@slanatech]https://github.com/slanatech/vue-monorepo-boilerplate
-
+- Forked from [@slanatech](https://github.com/slanatech/vue-monorepo-boilerplate)
 - Lerna and Yarn Workspaces to manage monorepo
 - Full Stack: Front End, Server, Common module packages
 - Front End package: Vue SPA using Vue-cli 3
@@ -11,7 +10,6 @@
 - Common package: common code used in both Front End and Server
 - Docs using Vuepress and Github pages
 - CI/CD using Travis CI
-- Docker build
 
 ## Prerequisites
 
@@ -52,8 +50,6 @@ yarn run start
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
-    "docker:build": "IMAGE_VERSION=$(node -p \"require('./lerna.json').version\") && docker image build -t $npm_package_config_imageRepo:$IMAGE_VERSION -f ./docker/Dockerfile .",
-    "publish": "lerna publish"
   }
 
 ```
@@ -68,8 +64,6 @@ yarn run start
 - `docs:dev` - vuepress documentation development
 - `docs:build` - build vuepress docs
 - `docs:deploy` - deploy vuepress docs to github pages
-- `docker:build` - build Docker image
-- `publish` - publish public packages using lerna
 
 ## Dev
 
@@ -83,103 +77,10 @@ This allows UI development with hot reloading, with dev server proxying API requ
 // vue.config.js
 module.exports = {
   devServer: {
-    proxy: "http://localhost:3200",
+    proxy: "http://localhost:3000",
   },
 };
 ```
-
-## Publishing packages
-
-```bash
-yarn run publish
-```
-
-This will publish all public packages in monorepo to npm by invoking `lerna publish`.
-
-Depending on your needs, you may choose to keep some or all packages private by setting `"private": true` in package.json of packages in monorepo.
-
-For illustration, in this boilerplate common package is made public, and other packages are private.
-
-## Docker Build
-
-Top-level script `yarn run docker:build` builds Docker image that contains entire Full Stack app:
-
-- UI package - compiled UI static files (`/dist`)
-- Common module package
-- Server package that implements API and serves UI static files
-
-Docker build context is top level directory, so all app packages can be accessed.
-
-Docker image entrypoint script just starts server, and you may access UI at [http://localhost:3200](http://localhost:3200)
-
-See `Dockefile` [https://github.com/snurby7/typescript-express-vue-starter/blob/master/docker/Dockerfile](https://github.com/snurby7/typescript-express-vue-starter/blob/master/docker/Dockerfile)
-
-Dockerfile is set up with two goals in mind:
-
-- Utilize layers cache with minimal rebuild when app code changes
-- Don't publish all packages to npm on every build
-
-These layers with 3rd party modules will be cached on Docker image rebuild if only app code changes:
-
-```dockerfile
-RUN yarn global add lerna
-
-COPY package.json lerna.json yarn.lock /app/
-COPY packages/common/package.json /app/packages/common/package.json
-COPY packages/server/package.json /app/packages/server/package.json
-COPY packages/ui/package.json /app/packages/ui/package.json
-
-RUN yarn install --production=true
-
-```
-
-And this copies app code - only relevant content from local packages - to Docker image.
-These layers will be rebuilt when app code changes:
-
-```dockerfile
-# Application Packages
-ADD packages/common/lib /app/packages/common/lib/
-COPY packages/server/server.js /app/packages/server/server.js
-ADD packages/ui/dist /app/packages/ui/dist/
-```
-
-Finally, `bootstrap` to ensure proper symlinks to local packages are set up in `node_modules`:
-
-```dockerfile
-RUN yarn run bootstrap
-```
-
-Example of `docker run`:
-
-```bash
-#!/usr/bin/env bash
-
-docker run -d -p 3200:3200 --name app --restart always snurby7/typescript-express-vue-starter:0.1.8
-```
-
-## CI/CD
-
-CI/CD is set up using Travis CI
-
-See `.travis.yml` [https://github.com/snurby7/typescript-express-vue-starter/blob/master/.travis.yml](https://github.com/snurby7/typescript-express-vue-starter/blob/master/.travis.yml)
-
-`before_install` executes `bootstrap` to ensure local packages are resolved:
-
-```yaml
-before_install:
-  - yarn && yarn run bootstrap
-```
-
-Then build script just executes `build`,`test`, and `docker:build`
-
-```yaml
-script:
-  - yarn run build
-  - yarn run test
-  - yarn run docker:build
-```
-
-If desired, you may extend `.travis.yml` adding publishing packages to npm, and publishing docker image to Docker registry.
 
 ## Enhancements and Bug Reports
 

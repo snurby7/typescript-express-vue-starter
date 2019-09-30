@@ -7,18 +7,14 @@ meta:
   - name: google-site-verification
     content: 1a3AJnjk7DhVoOQtRPd001OjW9bRrAgIgsIVlZApcgE
 features:
-- title: Monorepo
-  details: Managing monorepo packages with Lerna and Yarn workspaces
-- title: FullStack
-  details: UI, Server, Common module
-- title: Vue
-  details: Vue SPA using Vue-cli 3
-- title: Vuepress
-  details: Docs using Vuepress
-- title: Docker
-  details: Docker image build with fullstack app
-- title: CI/CD
-  details: Travis CI
+  - title: Monorepo
+    details: Managing monorepo packages with Lerna and Yarn workspaces
+  - title: FullStack
+    details: UI, Server, Common module
+  - title: Vue
+    details: Vue SPA using Vue-cli 3
+  - title: Vuepress
+    details: Docs using Vuepress
 footer: MIT Licensed | Copyright © 2018 slana.tech
 ---
 
