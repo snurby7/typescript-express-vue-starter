@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'deploy for github pages'
 
-git push -f https://github.com/snurby7/financial-vue.git master:gh-pages
+git push -f https://github.com/snurby7/typescript-express-vue-starter.git master:gh-pages
 
 cd -

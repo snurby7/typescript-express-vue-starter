@@ -1,6 +1,6 @@
-# financial-vue
+# typescript-express-vue-starter
 
-[![Build Status](https://travis-ci.org/snurby7/financial-vue.svg?branch=master)](https://travis-ci.org/snurby7/financial-vue)
+[![Build Status](https://travis-ci.org/snurby7/typescript-express-vue-starter.svg?branch=master)](https://travis-ci.org/snurby7/typescript-express-vue-starter)
 
 ### Vue Fullstack App Monorepo Boilerplate
 
@@ -24,7 +24,7 @@ This boilerplate uses [Lerna](https://lernajs.io/) and [Yarn](https://yarnpkg.co
 
 ```bash
 # 1. Clone the repository.
-git clone https://github.com/snurby7/financial-vue.git my-new-project
+git clone https://github.com/snurby7/typescript-express-vue-starter.git my-new-project
 
 # 2. Enter your newly-cloned folder
 cd my-new-project
@@ -118,7 +118,7 @@ Docker build context is top level directory, so all app packages can be accessed
 
 Docker image entrypoint script just starts server, and you may access UI at [http://localhost:3200](http://localhost:3200)
 
-See `Dockefile` [https://github.com/snurby7/financial-vue/blob/master/docker/Dockerfile](https://github.com/snurby7/financial-vue/blob/master/docker/Dockerfile)
+See `Dockefile` [https://github.com/snurby7/typescript-express-vue-starter/blob/master/docker/Dockerfile](https://github.com/snurby7/typescript-express-vue-starter/blob/master/docker/Dockerfile)
 
 Dockerfile is set up with two goals in mind:
 
@@ -160,7 +160,7 @@ Example of `docker run`:
 ```bash
 #!/usr/bin/env bash
 
-docker run -d -p 3200:3200 --name app --restart always snurby7/financial-vue:0.1.8
+docker run -d -p 3200:3200 --name app --restart always snurby7/typescript-express-vue-starter:0.1.8
 ```
 
 ## CI/CD
@@ -168,7 +168,7 @@ docker run -d -p 3200:3200 --name app --restart always snurby7/financial-vue:0.1
 CI/CD is set up using Travis CI
 
 
-See `.travis.yml` [https://github.com/snurby7/financial-vue/blob/master/.travis.yml](https://github.com/snurby7/financial-vue/blob/master/.travis.yml)
+See `.travis.yml` [https://github.com/snurby7/typescript-express-vue-starter/blob/master/.travis.yml](https://github.com/snurby7/typescript-express-vue-starter/blob/master/.travis.yml)
 
 `before_install` executes `bootstrap` to ensure local packages are resolved:
 
@@ -191,7 +191,7 @@ If desired, you may extend `.travis.yml` adding publishing packages to npm, and 
 
 ## Enhancements and Bug Reports
 
-If you find a bug, or have an enhancement in mind please post [issues](https://github.com/snurby7/financial-vue/issues) on GitHub.
+If you find a bug, or have an enhancement in mind please post [issues](https://github.com/snurby7/typescript-express-vue-starter/issues) on GitHub.
 Suggestions and feedback are very welcome !
 
 

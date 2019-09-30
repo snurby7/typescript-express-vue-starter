@@ -21,7 +21,7 @@
             "node"
         ],
         "paths": {
-            "@financial-vue/*": [
+            "@typescript-express-vue-starter/*": [
                 "packages/ui/*"
             ]
         },

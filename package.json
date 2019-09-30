@@ -5,12 +5,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/snurby7/financial-vue"
+    "url": "https://github.com/snurby7/typescript-express-vue-starter"
   },
   "author": "https://github.com/sv2",
-  "homepage": "https://snurby7.github.io/financial-vue/",
+  "homepage": "https://snurby7.github.io/typescript-express-vue-starter/",
   "bugs": {
-    "url": "https://github.com/snurby7/financial-vue/issues"
+    "url": "https://github.com/snurby7/typescript-express-vue-starter/issues"
   },
   "license": "MIT",
   "scripts": {

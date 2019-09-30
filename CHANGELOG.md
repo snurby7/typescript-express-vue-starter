@@ -1,4 +1,4 @@
-# financial-vue
+# typescript-express-vue-starter
 
 ### Changelog
 

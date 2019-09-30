@@ -1,6 +1,6 @@
 {
-  "name": "financial-vue",
-  "short_name": "financial-vue",
+  "name": "typescript-express-vue-starter",
+  "short_name": "typescript-express-vue-starter",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

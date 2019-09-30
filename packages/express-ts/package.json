@@ -1,5 +1,5 @@
 {
-  "name": "financial-vue",
+  "name": "typescript-express-vue-starter",
   "version": "0.0.0",
   "scripts": {
     "build": "node ./util/build.js",
